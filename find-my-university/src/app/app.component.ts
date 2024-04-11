@@ -18,31 +18,40 @@ interface University {
 
 export class AppComponent implements OnInit {
   universitiesList: University[] = []
+  country: string = ''
+  errorText: string = ''
 
   constructor(private http: HttpClient) {
   }
 
-  generateList() {
-    this.http.get<any[]>('http://universities.hipolabs.com/search?country=Brazil')
+  countryTyped($event:any) {
+    this.country = $event.target.value
+  }
+
+  generateList(country: string) {
+    this.universitiesList = []
+    this.http.get<any[]>(`http://universities.hipolabs.com/search?country=${country}`)
       .subscribe(data => {
-        data.map((item, index) => {
-          //console.log(item)
-          this.universitiesList.push(
-            {
-              id: index,
-              universityName: item.name,
-              city: item['state-province'] ?? '(no city provided)',
-              country: item.country,
-              webPage: item.web_pages[0],
-            }
-          )
-        })
-        console.log(this.universitiesList)
+        if (!data.length) {
+          this.errorText = 'No returns for that country'
+        } else {
+          data.map((item, index) => {
+            this.universitiesList.push(
+              {
+                id: index,
+                universityName: item.name,
+                city: item['state-province'] ?? '(no city provided)',
+                country: item.country,
+                webPage: item.web_pages[0],
+              }
+            )
+          })
+          console.log(this.universitiesList)
+        }
       })
   }
 
   ngOnInit(): void {
-    console.log('Im working fine')
     // this.http.get<University[]>('http://universities.hipolabs.com/search?country=Brazil')
     //   .subscribe( data => {
     //     //console.log(data);

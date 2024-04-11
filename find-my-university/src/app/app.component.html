@@ -1,5 +1,8 @@
 <h1>Hello world!</h1>
-<button (click)="generateList()">Click Me!</button>
+<label>Please, type in the country name:
+    <input (keyup)="countryTyped($event)" />
+</label>
+<button (click)="generateList(country)">Click Me!</button>
 <ul>
     <li *ngFor="let university of universitiesList">
         {{ university.universityName }} - {{ university.city }} - {{ university.country }} - {{ university.webPage }}
