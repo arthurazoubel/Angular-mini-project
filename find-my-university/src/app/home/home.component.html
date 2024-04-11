@@ -1,0 +1,14 @@
+<h1>Hello world!</h1>
+<label>Please, type in the country name:
+    <input (keyup)="countryTyped($event)" />
+</label>
+<button (click)="generateList(country)">Click Me!</button>
+
+<h2 [class]="errorInSearch">No data for the location selected!</h2>
+<ul [class]="">
+    <li *ngFor="let university of universitiesList">
+        {{ university.universityName }} - {{ university.city }} - {{ university.country }} - {{ university.webPage }}
+    </li>
+</ul>
+
+<!-- <app-universities-list [universitiesList]="universitiesList"></app-universities-list> -->
