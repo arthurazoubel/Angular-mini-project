@@ -18,23 +18,33 @@ interface University {
 export class HomeComponent {
   universitiesList: University[] = []
   country: string = ''
-  errorInSearch: string = ''
+  errorInSearch: boolean = true
+  displayText: string = 'No country provided'
 
   constructor(private http: HttpClient) {
   }
 
   countryTyped($event:any) {
     this.country = $event.target.value
+    if ($event.key === 'Enter' && $event.target.value) {
+      this.generateList(this.country)
+    }
   }
 
   generateList(country: string) {
     this.universitiesList = []
-    this.http.get<any[]>(`http://universities.hipolabs.com/search?country=${country}`)
+    if (country === '') {
+      this.errorInSearch = false
+      return
+    } else {
+      this.http.get<any[]>(`http://universities.hipolabs.com/search?country=${country}`)
       .subscribe(data => {
+        console.log(data)
         if (!data.length) {
-          this.errorInSearch = 'error-display'
+          this.errorInSearch = false
+          this.displayText = 'No data for the location selected'
         } else {
-          this.errorInSearch = 'list-display'
+          this.errorInSearch = true
           data.map((item, index) => {
             this.universitiesList.push(
               {
@@ -46,9 +56,9 @@ export class HomeComponent {
               }
             )
           })
-          console.log(this.universitiesList)
         }
       })
+    }
   }
 
 }

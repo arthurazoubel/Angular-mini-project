@@ -1,3 +1,62 @@
-.error-display {
-    color: red;
+.displayText {
+    display: none
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+li {
+    list-style-type: none;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    position: relative; /* Ensure relative positioning for absolute button */
+}
+
+.card-image {
+    width: 100%;
+    height: auto;
+}
+
+.card-content {
+    padding: 20px; /* Adjust padding as needed */
+}
+
+.card-button {
+    cursor: pointer;
+}
+
+.card-button:focus {
+    outline: auto;
+}
+
+.card-title {
+    margin-top: 0;
+    font-size: 24px;
+}
+
+.card-description {
+    color: #555;
+    font-size: 16px;
+}
+
+.card-link {
+    position: absolute; /* Position the link absolutely */
+    bottom: 20px; /* Adjust vertical position as needed */
+    left: 20px; /* Adjust horizontal position as needed */
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.card-link:hover {
+    text-decoration: underline;
 }
