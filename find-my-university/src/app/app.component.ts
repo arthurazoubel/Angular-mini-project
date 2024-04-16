@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
-
-
+export interface userData {
+  name: string;
+  age: number
+}
 
 @Component({
   selector: 'app-root',
@@ -10,8 +12,11 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class AppComponent implements OnInit {
+  dataToPass: userData = {
+    name: 'Arthur',
+    age: 36
+  }
   
-
   ngOnInit(): void {
     // this.http.get<University[]>('http://universities.hipolabs.com/search?country=Brazil')
     //   .subscribe( data => {

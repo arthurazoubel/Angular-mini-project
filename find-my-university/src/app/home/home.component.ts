@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { userData } from '../app.component';
 
 interface University {
-  // Define the structure of your data
   id: number;
   universityName: string;
   city: string;
@@ -15,11 +15,13 @@ interface University {
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
+
 export class HomeComponent {
   universitiesList: University[] = []
   country: string = ''
   errorInSearch: boolean = true
   displayText: string = 'No country provided'
+  @Input() someName: userData = {name:'', age:0};
 
   constructor(private http: HttpClient) {
   }

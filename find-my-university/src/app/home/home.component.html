@@ -5,7 +5,7 @@
 <button (click)="generateList(country)">Click Me!</button>
 
 <h2 [class.displayText]="errorInSearch">{{ displayText }}</h2>
-
+<h2>{{someName.name}} - {{someName.age}}</h2>
 
 <ul class="card-grid">
     <li class="card" *ngFor="let university of universitiesList">
