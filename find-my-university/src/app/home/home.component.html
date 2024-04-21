@@ -2,22 +2,8 @@
 <label>Please, type in the country name:
     <input (keyup)="countryTyped($event)" />
 </label>
-<button (click)="generateList(country)">Click Me!</button>
+<button (click)="callGenerateList(country)">Click Me!</button>
 
-<h2 [class.displayText]="errorInSearch">{{ displayText }}</h2>
 <h2>{{someName.name}} - {{someName.age}}</h2>
 
-<ul class="card-grid">
-    <li class="card" *ngFor="let university of universitiesList">
-        <div class="card-content card-button" role="button" tabindex="0">
-            <!-- <img src="placeholder.jpg" alt="Placeholder Image" class="card-image"> -->
-            <div class="card-content">
-              <h3 class="card-title">{{ university.universityName }}</h3>
-              <p class="card-description">{{ university.city }}</p>
-              <p class="card-description">{{ university.country }}</p>
-              <a [href]="university.webPage">{{ university.webPage }}</a>
-            </div>
-        </div>
-    </li>
-</ul>
-<!-- <app-universities-list [universitiesList]="universitiesList"></app-universities-list> -->
+<app-universities-list></app-universities-list>

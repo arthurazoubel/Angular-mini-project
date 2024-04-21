@@ -1,5 +1,14 @@
-<!-- <ul>
-    <li *ngFor="let university of universitiesList">
-        {{ university.universityName }} - {{ university.city }} - {{ university.country }} - {{ university.webPage }}
+<h2 [class.displayText]="errorInSearch">{{ displayText }}</h2>
+
+<ul class="card-grid">
+    <li class="card" *ngFor="let university of universitiesList">
+        <div class="card-content card-button" role="button" tabindex="0">
+            <div class="card-content">
+              <h3 class="card-title">{{ university.universityName }}</h3>
+              <p class="card-description">{{ university.city }}</p>
+              <p class="card-description">{{ university.country }}</p>
+              <a [href]="university.webPage">{{ university.webPage }}</a>
+            </div>
+        </div>
     </li>
-</ul> -->
+</ul>

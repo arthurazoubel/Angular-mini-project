@@ -5,6 +5,14 @@ export interface userData {
   age: number
 }
 
+export interface University {
+  id: number;
+  universityName: string;
+  city: string;
+  country: string;
+  webPage: string;
+}
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
